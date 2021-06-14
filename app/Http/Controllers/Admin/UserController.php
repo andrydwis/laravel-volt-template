@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Activitylog\Models\Activity;
 
 class UserController extends Controller
@@ -18,7 +19,7 @@ class UserController extends Controller
     {
         //
         $data = [
-            'users' => User::get()
+            'users' => User::where('id', '!=', Auth::user()->id)->get()
         ];
 
         return view('user.index', $data);
@@ -94,5 +95,14 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        activity()
+            ->causedBy(Auth::user())
+            ->log('Successfully delete user ' . $user->name . ' from system');
+
+        Activity::where('causer_id', $user->id)->delete();
+
+        $user->delete();
+
+        return redirect()->route('user.index');
     }
 }

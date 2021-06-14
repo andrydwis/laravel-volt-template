@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::get('/user', [UserController::class, 'index'])->name('user.index');
     Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('user.destroy');
     Route::get('/activity-log', [ActivityLogController::class, 'index'])->name('activity-log.index');
 });
 

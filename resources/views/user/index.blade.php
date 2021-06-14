@@ -44,8 +44,12 @@
                             @endif
                         </td>
                         <td>
-                            <button class="btn btn-sm btn-outline-primary">Delete</button>
-                            <a href="{{route('user.show', [$user])}}" class="btn btn-sm btn-primary">Detail</a>
+                            <form action="{{route('user.destroy', [$user])}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-sm btn-outline-primary">Delete</button>
+                                <a href="{{route('user.show', [$user])}}" class="btn btn-sm btn-primary">Detail</a>
+                            </form>
                         </td>
                     </tr>
                     @endforeach

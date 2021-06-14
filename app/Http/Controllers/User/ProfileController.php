@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
@@ -122,7 +123,7 @@ class ProfileController extends Controller
         $user->save();
 
         activity()
-            ->causedBy(auth()->user())
+            ->causedBy(Auth::user())
             ->log('Successfully update profile');
 
         return redirect()->route('profile.show');
@@ -147,7 +148,7 @@ class ProfileController extends Controller
         }
 
         activity()
-            ->causedBy(auth()->user())
+            ->causedBy(Auth::user())
             ->log('Successfully reset profile photo');
 
         return redirect()->route('profile.show');

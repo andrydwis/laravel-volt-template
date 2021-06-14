@@ -3,7 +3,11 @@
         <div class="user-card d-flex d-md-none align-items-center justify-content-between justify-content-md-center pb-4">
             <div class="d-flex align-items-center">
                 <div class="avatar-lg me-4">
+                    @if(auth()->user()->getMedia('images')->first())
+                    <img src="{{auth()->user()->getMedia('images')->first()->getUrl('thumb')}}" class="card-img-top rounded-circle border-white" alt="User" />
+                    @else
                     <img src="https://ui-avatars.com/api/?name={{auth()->user()->name}}" class="card-img-top rounded-circle border-white" alt="User" />
+                    @endif
                 </div>
                 <div class="d-block">
                     <h2 class="h5 mb-3">Hi, {{auth()->user()->name}}</h2>
@@ -11,7 +15,7 @@
                         @csrf
                         <button type="submit" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                             Sign Out
-                        </a>
+                            </a>
                     </form>
                 </div>
             </div>
@@ -30,6 +34,7 @@
                     <span class="sidebar-text">Dashboard</span>
                 </a>
             </li>
+            @role('admin')
             <li class="nav-item">
                 <span class="nav-link collapsed d-flex justify-content-between align-items-center" data-bs-toggle="collapse" data-bs-target="#submenu-master-data">
                     <span>
@@ -52,6 +57,8 @@
                     </ul>
                 </div>
             </li>
+            @endrole
+            @role('admin')
             <li class="nav-item">
                 <a href="{{route('activity-log.index')}}" class="nav-link">
                     <span class="sidebar-icon">
@@ -60,6 +67,7 @@
                     <span class="sidebar-text">Activity Log</span>
                 </a>
             </li>
+            @endrole
         </ul>
     </div>
 </nav>
