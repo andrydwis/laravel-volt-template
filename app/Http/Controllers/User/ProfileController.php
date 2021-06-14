@@ -126,6 +126,8 @@ class ProfileController extends Controller
             ->causedBy(Auth::user())
             ->log('Successfully update profile');
 
+        session()->flash('success', 'Successfully update profile');
+
         return redirect()->route('profile.show');
     }
 
@@ -150,6 +152,8 @@ class ProfileController extends Controller
         activity()
             ->causedBy(Auth::user())
             ->log('Successfully reset profile photo');
+
+        session()->flash('success', 'Successfully reset profile photo');
 
         return redirect()->route('profile.show');
     }

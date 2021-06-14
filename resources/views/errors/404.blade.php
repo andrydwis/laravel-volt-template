@@ -44,54 +44,23 @@
 
 <body>
     <main>
-        <section class="section-header overflow-hidden pt-7 pt-lg-8 pb-9 pb-lg-12 bg-primary text-white">
+        <section class="vh-100 d-flex align-items-center justify-content-center">
             <div class="container">
                 <div class="row">
-                    <div class="col-12 text-center">
-                        <h1 class="fw-bolder">Laravel Volt Template Starter</h1>
-                        <h2 class="lead fw-normal text-muted mb-5">Open source dashboard powered by Bootstrap 5</h2>
+                    <div class="col-12 text-center d-flex align-items-center justify-content-center">
+                        <div>
+                            <img class="img-fluid w-75" src="{{asset('assets/img/illustrations/404.svg')}}" alt="404 not found">
+                            <h1 class="mt-5">Page not <span class="fw-bolder text-primary">found</span></h1>
+                            <p class="lead my-4">Oops! Looks like you followed a bad link. If you think this is a problem with us, please tell us.</p>
+                            <a href="{{route('root.index')}}" class="btn btn-gray-800 d-inline-flex align-items-center justify-content-center mb-4">
+                                Back to homepage
+                            </a>
+                        </div>
                     </div>
                 </div>
-                <div class="d-flex justify-content-center gap-3">
-                    @guest
-                    <a href="{{route('login')}}" class="btn btn-secondary">Login</a>
-                    <a href="{{route('register')}}" class="btn btn-secondary">Register</a>
-                    @else
-                    <a href="{{route('dashboard')}}" class="btn btn-secondary">Dashboard</a>
-                    @endguest
-                </div>
             </div>
-            <figure class="position-absolute bottom-0 left-0 w-100 d-none d-md-block mb-n2">
-                <svg class="home-pattern" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
-                    <path d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
-                </svg>
-            </figure>
         </section>
     </main>
-    <div class="container mt-5">
-        <div class="row justify-content-between align-items-center">
-            <div class="col-lg-5 order-lg-2 mb-5 mb-lg-0">
-                <h2 class="h1">Bootstrap 5</h2>
-                <p class="mb-4 lead fw-bold">Latest version of Bootstrap without jQuery</p>
-                <p class="mb-4">Volt is built using the latest version of Bootstrap 5 and we only used Vanilla Javascript for everything including the plugins</p>
-                <a href="#" target="_blank" class="btn btn-outline-gray-600 d-inline-flex align-items-center">
-                    Getting started
-                </a>
-            </div>
-            <div class="col-lg-6 order-lg-1"><img src="{{asset('assets/img/illustrations/bs5-illustrations.svg')}}" alt="Front pages overview"></div>
-        </div>
-    </div>
-    <footer class="footer py-6 mt-5 bg-gray-800 text-white">
-        <div class="container">
-            <div class="row">
-                <div class="col mb-md-0">
-                    <div class="d-flex text-center justify-content-center align-items-center" role="contentinfo">
-                        <p class="fw-normal font-small mb-0">Copyright © Themesberg 2019-<span class="current-year">2021</span>. All rights reserved.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <!-- Core -->
     <script src="{{asset('vendor/@popperjs/core/dist/umd/popper.min.js')}}"></script>

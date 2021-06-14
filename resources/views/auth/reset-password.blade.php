@@ -63,7 +63,7 @@
                                 <input type="hidden" name="token" value="{{ $request->route('token') }}">
                                 <div class="mb-4">
                                     <label for="email">Your Email</label>
-                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="example@gmail.com" value="{{old('email')}}">
+                                    <input type="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="example@gmail.com" value="{{$request->email}}" readonly>
                                     @error('email')
                                     <div class="invalid-feedback">
                                         {{$message}}
