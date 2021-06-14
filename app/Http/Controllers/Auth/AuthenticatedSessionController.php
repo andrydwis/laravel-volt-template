@@ -48,6 +48,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request)
     {
+        activity()
+            ->causedBy(Auth::user())
+            ->log('Successfully logout from system');
+
         Auth::guard('web')->logout();
 
         $request->session()->invalidate();

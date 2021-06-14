@@ -56,13 +56,13 @@
                     <div class="col-12 d-flex align-items-center justify-content-center">
                         <div class="bg-white shadow border-0 rounded border-light p-4 p-lg-5 w-100 fmxw-500">
                             <div class="text-center text-md-center mb-4 mt-md-0">
-                                <h1 class="mb-0 h3">Create Account </h1>
+                                <h1 class="mb-0 h3">Create Account</h1>
                             </div>
-                            <form action="{{route('register')}}" method="post" class="mt-4">
+                            <form action="{{route('register')}}" method="post">
                                 @csrf
                                 <div class="mb-4">
                                     <label for="name">Your Name</label>
-                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="your name" value="{{old('name')}}" autofocus>
+                                    <input type="text" name="name" class="form-control @error('name') is-invalid @enderror" placeholder="fullname" value="{{old('name')}}">
                                     @error('name')
                                     <div class="invalid-feedback">
                                         {{$message}}
@@ -96,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary">Sign up</button>
+                                    <button type="submit" class="btn btn-primary">Sign Up</button>
                                 </div>
                             </form>
                             <div class="d-flex justify-content-center align-items-center mt-4">

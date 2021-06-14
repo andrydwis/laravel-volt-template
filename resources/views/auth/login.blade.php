@@ -58,7 +58,7 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <h1 class="mb-0 h3">Sign in to our platform</h1>
                             </div>
-                            <form action="{{route('login')}}" method="post" class="mt-4">
+                            <form action="{{route('login')}}" method="post">
                                 @csrf
                                 <div class="mb-4">
                                     <label for="email">Your Email</label>
@@ -79,10 +79,10 @@
                                     @enderror
                                 </div>
                                 <div class="d-flex justify-content-end align-items-top mb-4">
-                                    <div><a href="{{route('password.request')}}" class="small text-right">Lost password?</a></div>
+                                    <div><a href="{{route('password.request')}}" class="small text-right">Forgot password?</a></div>
                                 </div>
                                 <div class="d-grid">
-                                    <button type="submit" class="btn btn-primary">Sign in</button>
+                                    <button type="submit" class="btn btn-primary">Sign In</button>
                                 </div>
                             </form>
                             <div class="d-flex justify-content-center align-items-center mt-4">

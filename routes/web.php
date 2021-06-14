@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\ActivityLogController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\User\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,8 +20,21 @@ Route::get('/', function () {
     return view('welcome');
 })->name('root.index');
 
+Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
+    Route::get('/user', [UserController::class, 'index'])->name('user.index');
+    Route::get('/user/{user}', [UserController::class, 'show'])->name('user.show');
+    Route::get('/activity-log', [ActivityLogController::class, 'index'])->name('activity-log.index');
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile/edit', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile/reset-photo', [ProfileController::class, 'resetPhoto'])->name('profile.reset-photo');
+});
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('layouts.app');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

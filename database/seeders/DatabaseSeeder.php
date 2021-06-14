@@ -20,11 +20,13 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'admin']);
         Role::create(['name' => 'client']);
 
-        User::create([
+        $admin = User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
             'password' => Hash::make(123),
             'email_verified_at' => Carbon::now()
         ]);
+
+        $admin->assignRole('admin');
     }
 }

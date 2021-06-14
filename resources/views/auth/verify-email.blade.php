@@ -64,7 +64,7 @@
                             <div class="text-center text-md-center mb-4 mt-md-0">
                                 <h1 class="mb-0 h3">Please verify your email first !</h1>
                             </div>
-                            <form action="{{route('verification.send')}}" method="post" class="mt-4">
+                            <form action="{{route('verification.send')}}" method="post">
                                 @csrf
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary">Send Email Verification</button>
