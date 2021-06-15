@@ -101,6 +101,8 @@ class UserController extends Controller
 
         Activity::where('causer_id', $user->id)->delete();
 
+        session()->flash('success', 'Successfully delete user ' . $user->name . ' from system');
+
         $user->delete();
 
         return redirect()->route('user.index');
