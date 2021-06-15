@@ -79,21 +79,17 @@
                                     @enderror
                                 </div>
                                 <div class="mb-4">
-                                    <div class="row">
-                                        <div class="col">
-                                            <label for="password">Your Password</label>
-                                            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="password">
-                                            @error('password')
-                                            <div class="invalid-feedback">
-                                                {{$message}}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="col">
-                                            <label for="password">Password Confirmation</label>
-                                            <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation">
-                                        </div>
+                                    <label for="password">Your Password</label>
+                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="password">
+                                    @error('password')
+                                    <div class="invalid-feedback">
+                                        {{$message}}
                                     </div>
+                                    @enderror
+                                </div>
+                                <div class="mb-4">
+                                    <label for="password">Password Confirmation</label>
+                                    <input type="password" name="password_confirmation" class="form-control" placeholder="password confirmation">
                                 </div>
                                 <div class="d-grid">
                                     <button type="submit" class="btn btn-primary">Sign Up</button>
