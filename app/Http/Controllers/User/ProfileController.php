@@ -54,8 +54,8 @@ class ProfileController extends Controller
     {
         //
         $data = [
-            'user' => auth()->user(),
-            'logs' => Activity::where('causer_id', auth()->user()->id)->latest()->get()
+            'user' => Auth::user(),
+            'logs' => Activity::where('causer_id', Auth::user()->id)->latest()->get()
         ];
 
         return view('profile.show', $data);
@@ -71,7 +71,7 @@ class ProfileController extends Controller
     {
         //
         $data = [
-            'user' => auth()->user(),
+            'user' => Auth::user(),
         ];
 
         return view('profile.edit', $data);
@@ -90,13 +90,13 @@ class ProfileController extends Controller
         if ($request->password) {
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->user())],
+                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Auth::user())],
                 'password' => ['required', 'confirmed', Password::defaults()],
             ]);
         } else {
             $request->validate([
                 'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(auth()->user())],
+                'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users')->ignore(Auth::user())],
             ]);
         }
 
@@ -107,14 +107,14 @@ class ProfileController extends Controller
         }
 
 
-        $user = User::find(auth()->user()->id);
+        $user = User::find(Auth::user()->id);
         $user->name = $request->name;
         $user->email = $request->email;
         if ($request->password) {
             $user->password = Hash::make($request->password);
         }
         if ($request->file('photo')) {
-            $old = auth()->user()->getMedia('images')->first();
+            $old = Auth::user()->getMedia('images')->first();
             if ($old) {
                 $old->delete();
             }
@@ -144,7 +144,7 @@ class ProfileController extends Controller
 
     public function resetPhoto()
     {
-        $old = auth()->user()->getMedia('images')->first();
+        $old = Auth::user()->getMedia('images')->first();
         if ($old) {
             $old->delete();
         }

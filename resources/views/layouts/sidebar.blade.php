@@ -15,7 +15,7 @@
                         @csrf
                         <button type="submit" class="btn btn-secondary btn-sm d-inline-flex align-items-center">
                             Sign Out
-                            </a>
+                        </button>
                     </form>
                 </div>
             </div>

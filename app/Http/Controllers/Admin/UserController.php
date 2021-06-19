@@ -95,6 +95,11 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         //
+        $old = Auth::user()->getMedia('images')->first();
+        if ($old) {
+            $old->delete();
+        }
+
         activity()
             ->causedBy(Auth::user())
             ->log('Successfully delete user ' . $user->name . ' from system');
